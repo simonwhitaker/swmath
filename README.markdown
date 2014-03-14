@@ -19,6 +19,6 @@ All the magic happens in `scripts/swmath-gen.py`, so that's where you should mak
 * No unit tests
 * No support for `nan`, `nanf` and `nanl` since those three functions share the same signature and hence can't be overridden this way.
 
-### Refs
+## Refs
  
 * http://clang.llvm.org/docs/AttributeReference.html#overloadable
