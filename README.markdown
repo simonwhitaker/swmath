@@ -8,6 +8,10 @@ Calling `math.h` functions like `floor` and `floorf` on CGFloat variables become
 
 Right now this is a very early, mostly untested hack. Feel free to play with it, test it out and see how you get on. 
 
+## What about `tgmath.h`?
+
+I know of `tgmath.h`, but I really liked the idea of using Clang's function overloading instead. If you're happy with `tgmath.h` then by all means stick with it.
+
 ## Contributing
 
 Pull requests are very, very welcome. Please note however that `swmath.h` and `swmath.c` are automatically generated; please don't submit changes to those files, since the changes won't persist.
