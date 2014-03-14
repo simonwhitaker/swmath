@@ -2,19 +2,16 @@
 
 import argparse
 
-interface_template = """
-float __attribute__((overloadable)) sw__fn_name__(float f);
-double __attribute__((overloadable)) sw__fn_name__(double d);
-long double __attribute__((overloadable)) sw__fn_name__(long double l);
-"""
-
-implementation_template = """
-float __attribute__((overloadable)) sw__fn_name__(float f) { return __fn_name__f(f); }
-double __attribute__((overloadable)) sw__fn_name__(double d) { return __fn_name__(d); }
-long double __attribute__((overloadable)) sw__fn_name__(long double l) { return __fn_name__l(l); }
-"""
-
 functions = [ 
+    # Each entry is a tuple containing the base function name
+    # (i.e. without f or l suffix) and a tuple of argument 
+    # types.
+    # 
+    # An argument type of __type__ denotes that the argument
+    # has the same type as the function's return type.
+    # 
+    # If a function has only a single __type__ argument, the
+    # second tuple entry can be omitted.
     ('acos',),
     ('asin',),
     ('atan',),
@@ -134,7 +131,7 @@ def print_output(is_interface):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--interface', dest='is_interface', action='store_true', default=False)
+    parser.add_argument('-i', '--interface', dest='is_interface', action='store_true', default=False, help='Output the interface (.h) rather than the implementation (.c)')
     args = parser.parse_args()
     print_output(args.is_interface)
 
